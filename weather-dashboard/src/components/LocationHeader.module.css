@@ -1,0 +1,12 @@
+.locationHeader {
+  border: 1px solid #f5f7f6;
+  border-radius: 12px;
+}
+
+.city {
+  font-size: 2rem;
+}
+
+.date {
+  color: #f5f7f6;
+}

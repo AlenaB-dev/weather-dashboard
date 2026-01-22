@@ -1,8 +1,10 @@
+import headerStyle from "./LocationHeader.module.css";
+
 function LocationHeader({ city, date }) {
   return (
-    <header className="location-header">
-      <h1 className="city">{city}</h1>
-      <p className="date">{date}</p>
+    <header className={headerStyle.locationHeader}>
+      <h1 className={headerStyle.city}>{city}</h1>
+      <p className={headerStyle.date}>{date}</p>
     </header>
   );
 }
