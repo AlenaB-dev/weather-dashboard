@@ -7,7 +7,12 @@ function App() {
   return (
     <>
       <LocationHeader city="London" date="Monday, 22 January" />
-      <WeatherOverview>Weather</WeatherOverview>
+      <WeatherOverview
+        wind={12}
+        humidity={65}
+        weatherIcon="https://openweathermap.org/img/wn/10d@2x.png"
+        description="light rain"
+      />
       <TemperatureNow> now is 22 degree</TemperatureNow>
     </>
   );
