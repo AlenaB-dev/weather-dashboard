@@ -1,8 +1,9 @@
 import overviewStyle from "./WeatherOverview.module.css";
+import styles from "./Glass.module.css";
 
 function WeatherOverview({ wind, humidity, weatherIcon, description }) {
   return (
-    <section className={overviewStyle.weatherOverview}>
+    <section className={`${overviewStyle.weatherOverview} ${styles.glass}`}>
       <div className={overviewStyle.weatherIcon}>
         {" "}
         <img src={weatherIcon} alt={description} />
