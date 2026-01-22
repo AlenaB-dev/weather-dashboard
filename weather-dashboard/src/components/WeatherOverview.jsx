@@ -1,13 +1,13 @@
-import React from "react";
+import overviewStyle from "./WeatherOverview.module.css";
 
 function WeatherOverview({ wind, humidity, weatherIcon, description }) {
   return (
-    <section className="weather-overview">
-      <div className="weather-icon">
+    <section className={overviewStyle.weatherOverview}>
+      <div className={overviewStyle.weatherIcon}>
         {" "}
         <img src={weatherIcon} alt={description} />
       </div>
-      <div className="weather-details">
+      <div className={overviewStyle.weatherDetails}>
         <p>Wind: {wind}km/h</p>
         <p>Humidity {humidity}%</p>
       </div>
