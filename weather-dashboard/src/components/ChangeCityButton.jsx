@@ -1,7 +1,5 @@
-import React from "react";
-
-function ChangeCityButton() {
-  return <div>ChangeCityButton</div>;
+function ChangeCityButton({ onclick }) {
+  return <button onclick={onclick}>Pick another city</button>;
 }
 
 export default ChangeCityButton;
