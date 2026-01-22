@@ -1,8 +1,9 @@
 import ForecastItem from "./ForecastItem";
+import listStyle from "./ForecastList.module.css";
 
 function ForecastList({ forecast }) {
   return (
-    <div>
+    <div className={listStyle.list}>
       {forecast.map((item) => (
         <ForecastItem
           key={item.day}

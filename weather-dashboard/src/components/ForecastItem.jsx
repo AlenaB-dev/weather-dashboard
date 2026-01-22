@@ -1,5 +1,3 @@
-import React from "react";
-
 function ForecastItem({ day, temp, icon }) {
   return (
     <section className="forecast-item">

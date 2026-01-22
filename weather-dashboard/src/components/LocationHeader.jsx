@@ -1,5 +1,3 @@
-import React from "react";
-
 function LocationHeader({ city, date }) {
   return (
     <header className="location-header">

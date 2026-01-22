@@ -2,7 +2,7 @@ import React from "react";
 
 function WeatherOverview({ wind, humidity, weatherIcon, description }) {
   return (
-    <section classname="weather-overview">
+    <section className="weather-overview">
       <div className="weather-icon">
         {" "}
         <img src={weatherIcon} alt={description} />

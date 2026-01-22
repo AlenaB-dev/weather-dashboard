@@ -1,5 +1,5 @@
 function ChangeCityButton({ onclick }) {
-  return <button onclick={onclick}>Pick another city</button>;
+  return <button onClick={onclick}>Pick another city</button>;
 }
 
 export default ChangeCityButton;
