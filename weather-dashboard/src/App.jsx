@@ -14,12 +14,12 @@ function App() {
   ];
 
   // use geolocation
-  const { position, error, isLoading } = useGeolocation();
+  const { city, position, error, isLoading } = useGeolocation();
 
-  let city = "Detecting location...";
+  let cityLabel = "Detecting location...";
 
-  if (error) city = "Location denied";
-  if (position) city = "Your city";
+  if (error) cityLabel = "Location unavailable";
+  if (city) cityLabel = city;
 
   const date = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-      <LocationHeader city={city} date={date} />
+      <LocationHeader city={cityLabel} date={date} />
       <WeatherOverview
         wind={12}
         humidity={65}
