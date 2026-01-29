@@ -6,14 +6,9 @@ import ForecastList from "./components/ForecastList";
 import ChangeCityButton from "./components/ChangeCityButton";
 import { useGeolocation } from "./hooks/useGeolocation";
 import { useWeather } from "./hooks/useWeather";
+import { useForecast } from "./hooks/useForecast";
 
 function App() {
-  const forecastMock = [
-    { day: "Tue", temp: "18°C", icon: "/sun.png" },
-    { day: "Wend", temp: "16°C", icon: "/cloud.png" },
-    { day: "Thur", temp: "19°C", icon: "/sun.png" },
-  ];
-
   // use geolocation
   const { city, position, error: geoError } = useGeolocation();
   const {
@@ -33,6 +28,13 @@ function App() {
     month: "long",
   });
 
+  // forecast for three days ahead
+  const {
+    forecast,
+    isLoading: forecastLoading,
+    error: forecastError,
+  } = useForecast(position?.lat, position?.lon);
+
   return (
     <>
       <LocationHeader city={cityLabel} date={date} />
@@ -50,7 +52,12 @@ function App() {
         temperature={weather?.main.temp}
         description={weather?.weather[0].description}
       />
-      <ForecastList forecast={forecastMock} />
+      <div>
+        {forecastLoading && <p>Loading forecast...</p>}
+        {forecastError && <p>{forecastError}</p>}
+        <ForecastList forecast={forecast} />
+      </div>
+
       <ChangeCityButton onclick={() => alert("Change city")} />
     </>
   );

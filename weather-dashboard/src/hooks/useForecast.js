@@ -28,7 +28,7 @@ export function useForecast(lat, lon) {
           day: new Date(item.dt_txt).toLocaleDateString("en-GB", {
             weekday: "short",
           }),
-          temp: `$Math.round(item.main.temp)°C`,
+          temp: `${Math.round(item.main.temp)}°C`,
           icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}.png`,
         }));
 
