@@ -9,6 +9,7 @@ function ForecastList({ forecast }) {
         <ForecastItem
           key={item.day}
           day={item.day}
+          date={item.date}
           temp={item.temp}
           icon={item.icon}
         />

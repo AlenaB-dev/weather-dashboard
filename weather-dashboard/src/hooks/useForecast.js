@@ -24,13 +24,18 @@ export function useForecast(lat, lon) {
           .filter((item) => item.dt_txt.includes("12:00:00"))
           .slice(0, 3); // showing first three days
 
-        const mapped = dailyForecast.map((item) => ({
-          day: new Date(item.dt_txt).toLocaleDateString("en-GB", {
-            weekday: "short",
-          }),
-          temp: `${Math.round(item.main.temp)}°C`,
-          icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}.png`,
-        }));
+        const mapped = dailyForecast.map((item) => {
+          const dateObj = new Date(item.dt_txt);
+          return {
+            day: dateObj.toLocaleDateString("en-US", { weekday: "short" }),
+            date: dateObj.toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "short",
+            }),
+            temp: `${Math.round(item.main.temp)}°C`,
+            icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}.png`,
+          };
+        });
 
         setForecast(mapped);
       })
