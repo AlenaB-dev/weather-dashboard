@@ -4,17 +4,32 @@ import WeatherOverview from "./components/WeatherOverview";
 import TemperatureNow from "./components/TemperatureNow";
 import ForecastList from "./components/ForecastList";
 import ChangeCityButton from "./components/ChangeCityButton";
+import { useGeolocation } from "./hooks/useGeolocation";
 
 function App() {
   const forecastMock = [
-    { day: "Tue", temp: 18, icon: "/sun.png" },
-    { day: "Wend", temp: 16, icon: "/cloud.png" },
-    { day: "Thur", temp: 19, icon: "/sun.png" },
+    { day: "Tue", temp: "18°C", icon: "/sun.png" },
+    { day: "Wend", temp: "16°C", icon: "/cloud.png" },
+    { day: "Thur", temp: "19°C", icon: "/sun.png" },
   ];
+
+  // use geolocation
+  const { position, error, isLoading } = useGeolocation();
+
+  let city = "Detecting location...";
+
+  if (error) city = "Location denied";
+  if (position) city = "Your city";
+
+  const date = new Date().toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
 
   return (
     <>
-      <LocationHeader city="London" date="Monday, 22 January" />
+      <LocationHeader city={city} date={date} />
       <WeatherOverview
         wind={12}
         humidity={65}
