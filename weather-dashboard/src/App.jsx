@@ -5,6 +5,7 @@ import TemperatureNow from "./components/TemperatureNow";
 import ForecastList from "./components/ForecastList";
 import ChangeCityButton from "./components/ChangeCityButton";
 import { useGeolocation } from "./hooks/useGeolocation";
+import { useWeather } from "./hooks/useWeather";
 
 function App() {
   const forecastMock = [
@@ -14,11 +15,16 @@ function App() {
   ];
 
   // use geolocation
-  const { city, position, error, isLoading } = useGeolocation();
+  const { city, position, error: geoError } = useGeolocation();
+  const {
+    weather,
+    error: weatherError,
+    isLoading: weatherLoading,
+  } = useWeather(position?.lat, position?.lon);
 
   let cityLabel = "Detecting location...";
 
-  if (error) cityLabel = "Location unavailable";
+  if (geoError) cityLabel = "Location unavailable";
   if (city) cityLabel = city;
 
   const date = new Date().toLocaleDateString("en-GB", {
@@ -30,13 +36,20 @@ function App() {
   return (
     <>
       <LocationHeader city={cityLabel} date={date} />
-      <WeatherOverview
-        wind={12}
-        humidity={65}
-        weatherIcon="https://openweathermap.org/img/wn/10d@2x.png"
-        description="light rain"
+      <div>
+        <WeatherOverview
+          weather={weather}
+          isLoading={weatherLoading}
+          error={weatherError}
+          weatherIcon="https://openweathermap.org/img/wn/10d@2x.png"
+        />
+        {geoError && <p>{geoError}</p>}
+      </div>
+
+      <TemperatureNow
+        temperature={weather?.main.temp}
+        description={weather?.weather[0].description}
       />
-      <TemperatureNow temperature={8.2} description="Light rain" />
       <ForecastList forecast={forecastMock} />
       <ChangeCityButton onclick={() => alert("Change city")} />
     </>
