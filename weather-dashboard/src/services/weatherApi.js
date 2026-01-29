@@ -8,5 +8,5 @@ export async function fetchWeather(lat, lon) {
   );
 
   if (!res.ok) throw new Error("Failed to fetch weather");
-  return res.json();
+  return res.json;
 }
