@@ -10,7 +10,7 @@ import { useForecast } from "./hooks/useForecast";
 import { useState } from "react";
 
 function App() {
-  // choose another city button
+  // select another city
   const [customCity, setCustomCity] = useState(null);
 
   // use geolocation
@@ -68,6 +68,7 @@ function App() {
       </div>
 
       <ChangeCityButton onclick={handleChangeCity} />
+      <CitySelector onSelect={setCustomCity} />
     </>
   );
 }
