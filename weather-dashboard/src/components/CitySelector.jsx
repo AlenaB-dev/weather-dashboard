@@ -8,21 +8,27 @@ function CitySelector({ onSelect }) {
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
+  // Debounce
   useEffect(() => {
     if (!query) {
       setCities([]);
       return;
     }
 
-    setLoading(true);
+    const handler = setTimeout(() => {
+      setLoading(true);
 
-    fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`,
-    )
-      .then((res) => res.json())
-      .then((data) => setCities(data))
-      .catch(() => setCities([]))
-      .finally(() => setLoading(false));
+      fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`,
+      )
+        .then((res) => res.json())
+        .then((data) => setCities(data))
+        .catch(() => setCities([]))
+        .finally(() => setLoading(false));
+    }, 500); // postpone query for 500 mlsec
+
+    //drop timer
+    return () => clearTimeout(handler);
   }, [query, API_KEY]);
 
   return (
