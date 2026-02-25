@@ -25,28 +25,25 @@ function App() {
     isLoading: weatherLoading,
   } = useWeather(lat, lon);
 
-  const handleChangeCity = () => {
-    const newCity = prompt("Enter city name:");
-    if (newCity) setCustomCity(newCity);
-  };
+  // forecast for three days ahead
+  const {
+    forecast,
+    isLoading: forecastLoading,
+    error: forecastError,
+  } = useForecast(lat, lon);
 
   let cityLabel = "Detecting location...";
 
   if (geoError) cityLabel = "Location unavailable";
-  if (city) cityLabel = city;
+
+  if (selectedCity?.name) cityLabel = selectedCity.name;
+  else if (city) cityLabel = city;
 
   const date = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
     day: "numeric",
     month: "long",
   });
-
-  // forecast for three days ahead
-  const {
-    forecast,
-    isLoading: forecastLoading,
-    error: forecastError,
-  } = useForecast(position?.lat, position?.lon);
 
   return (
     <>
