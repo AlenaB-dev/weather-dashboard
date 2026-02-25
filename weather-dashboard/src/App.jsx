@@ -10,15 +10,17 @@ import { useForecast } from "./hooks/useForecast";
 import { useState } from "react";
 
 function App() {
-  // select another city
+  // selected city
   const [selectedCity, setSelectedCity] = useState(null);
 
-  // use geolocation
+  // geolocation
   const { city, position, error: geoError } = useGeolocation();
 
+  // API's coords: choosed city or geolocation
   const lat = selectedCity?.lat ?? position?.lat;
   const lon = selectedCity?.lon ?? position?.lon;
 
+  // weather
   const {
     weather,
     error: weatherError,
@@ -32,13 +34,23 @@ function App() {
     error: forecastError,
   } = useForecast(lat, lon);
 
+  // country code in country name
+  const regionName = new Intl.DisplayNames(["en"], { type: "region" });
+
+  // city name in heading
   let cityLabel = "Detecting location...";
+  if (selectedCity) {
+    const countryName = selectedCity.country
+      ? regionName.of(selectedCity.country)
+      : "";
+    cityLabel = `${selectedCity.name}${selectedCity.state ? `, ${selectedCity.state}` : ""}, ${countryName}`;
+  } else if (geoError) {
+    cityLabel = "Location unavailable";
+  } else if (city) {
+    cityLabel = city;
+  }
 
-  if (geoError) cityLabel = "Location unavailable";
-
-  if (selectedCity?.name) cityLabel = selectedCity.name;
-  else if (city) cityLabel = city;
-
+  // current date
   const date = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
     day: "numeric",

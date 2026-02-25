@@ -27,7 +27,7 @@ function CitySelector({ onSelect }) {
         .finally(() => setLoading(false));
     }, 500); // postpone query for 500 mlsec
 
-    //drop timer
+    //clear timer
     return () => clearTimeout(handler);
   }, [query, API_KEY]);
 
@@ -51,13 +51,15 @@ function CitySelector({ onSelect }) {
                   name: c.name,
                   lat: c.lat,
                   lon: c.lon,
+                  country: c.country,
+                  state: c.state,
                 }); // передаём выбранный город
                 setQuery(""); // очищаем поле
                 setCities([]);
               }}
             >
-              {c.name},{c.state ? c.state + ", " : ""}
-              {c.country}
+              {c.name}
+              {c.state ? `, ${c.state}` : ""},{c.country}
             </li>
           ))}
         </ul>
