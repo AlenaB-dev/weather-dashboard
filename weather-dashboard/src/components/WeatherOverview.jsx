@@ -7,7 +7,7 @@ function WeatherOverview({ weather, isLoading, error }) {
   if (!weather) return null;
 
   const { main, weather: details, wind } = weather;
-  const iconUrl = `http://openweathermap.org/img/wn/${details[0].icon}@2x.png`;
+  const iconUrl = `https://openweathermap.org/img/wn/${details[0].icon}@2x.png`;
 
   return (
     <section className={`${overviewStyle.weatherOverview} ${styles.glass}`}>
