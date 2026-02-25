@@ -1,6 +1,25 @@
 .citySection {
   position: relative;
   width: 250px;
+  margin: 1rem auto;
+}
+
+.citySection input {
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s;
+}
+
+.citySection input:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .cityList {
@@ -8,17 +27,22 @@
   top: "100%";
   left: 0;
   right: 0;
-  background: #fff;
-  border: 1px solid #ccc;
+  margin: 0.2rem 0 0;
+  background-color: rgba(44, 87, 130, 0.95);
+  border-radius: 12px;
   list-style: none;
-  margin: 0;
   padding: 0;
-  max-height: 150;
+  max-height: 200;
   overflow-y: auto;
   z-index: 10;
 }
 
 .cityItem {
-  padding: 0.5rem;
+  padding: 0.5rem 0.8rem;
   cursor: pointer;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+.cityItem:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
