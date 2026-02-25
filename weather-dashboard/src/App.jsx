@@ -3,7 +3,7 @@ import LocationHeader from "./components/LocationHeader";
 import WeatherOverview from "./components/WeatherOverview";
 import TemperatureNow from "./components/TemperatureNow";
 import ForecastList from "./components/ForecastList";
-import ChangeCityButton from "./components/ChangeCityButton";
+import CitySelector from "./components/CitySelector";
 import { useGeolocation } from "./hooks/useGeolocation";
 import { useWeather } from "./hooks/useWeather";
 import { useForecast } from "./hooks/useForecast";
@@ -11,15 +11,19 @@ import { useState } from "react";
 
 function App() {
   // select another city
-  const [customCity, setCustomCity] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
 
   // use geolocation
   const { city, position, error: geoError } = useGeolocation();
+
+  const lat = selectedCity?.lat ?? position?.lat;
+  const lon = selectedCity?.lon ?? position?.lon;
+
   const {
     weather,
     error: weatherError,
     isLoading: weatherLoading,
-  } = useWeather(position?.lat, position?.lon, customCity);
+  } = useWeather(lat, lon);
 
   const handleChangeCity = () => {
     const newCity = prompt("Enter city name:");
@@ -67,8 +71,7 @@ function App() {
         <ForecastList forecast={forecast} />
       </div>
 
-      <ChangeCityButton onclick={handleChangeCity} />
-      <CitySelector onSelect={setCustomCity} />
+      <CitySelector onSelect={setSelectedCity} />
     </>
   );
 }

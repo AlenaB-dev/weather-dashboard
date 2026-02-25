@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import cityStyle from "./CitySelector.module.css";
 
 function CitySelector({ onSelect }) {
   const [query, setQuery] = useState("");
@@ -25,18 +26,19 @@ function CitySelector({ onSelect }) {
   }, [query, API_KEY]);
 
   return (
-    <div className="">
+    <div className={cityStyle.citySection}>
       <input
         type="text"
-        placeholder="Type city..."
+        placeholder="Pick another city..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
 
       {query && cities.length > 0 && (
-        <ul>
+        <ul className={cityStyle.cityList}>
           {cities.map((c) => (
             <li
+              className={cityStyle.cityItem}
               key={`${c.name}-${c.lat}-${c.lon}`}
               onClick={() => {
                 onSelect({

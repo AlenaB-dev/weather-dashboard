@@ -1,0 +1,24 @@
+.citySection {
+  position: relative;
+  width: 250px;
+}
+
+.cityList {
+  position: "absolute";
+  top: "100%";
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 150;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.cityItem {
+  padding: 0.5rem;
+  cursor: pointer;
+}
