@@ -33,7 +33,7 @@ export function useForecast(lat, lon) {
               month: "short",
             }),
             temp: `${Math.round(item.main.temp)}°C`,
-            icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}.png`,
+            icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`,
           };
         });
 
