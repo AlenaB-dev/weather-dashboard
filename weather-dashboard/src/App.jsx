@@ -57,8 +57,27 @@ function App() {
     month: "long",
   });
 
+  // background image state
+  const getWeatherClass = (condition) => {
+    switch (condition) {
+      case "Rain":
+      case "Drizzle":
+        return "weather-rain";
+      case "Clear":
+        return "weather-sun";
+      case "Clouds":
+        return "weather-clouds";
+      case "Snow":
+        return "weather-snow";
+      default:
+        return "weather-default";
+    }
+  };
+
+  const weatherClass = getWeatherClass(weather?.weather[0]?.main);
+
   return (
-    <>
+    <div className={`app ${weatherClass}`}>
       <LocationHeader city={cityLabel} date={date} />
       <div>
         <WeatherOverview
@@ -81,7 +100,7 @@ function App() {
       </div>
 
       <CitySelector onSelect={setSelectedCity} />
-    </>
+    </div>
   );
 }
 
