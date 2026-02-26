@@ -1,17 +1,17 @@
 .city {
   margin: 0.5rem auto;
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  transition: font-size 0.2s ease;
   line-height: 1.1;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 100%;
-  word-break: break-word;
-  text-overflow: ellipsis;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .citySub {
-  margin: 0 auto;
-  font-size: 0.8rem;
+  max-width: 100%;
+  margin: 0.5rem 0;
+  font-size: clamp(0.7rem, 2.5vw, 0.9rem);
   display: block;
   white-space: nowrap;
   overflow: hidden;
