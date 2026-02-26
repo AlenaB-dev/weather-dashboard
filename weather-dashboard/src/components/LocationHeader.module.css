@@ -12,6 +12,7 @@
   max-width: 100%;
   margin: 0.5rem 0;
   font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+  text-align: center;
   display: block;
   white-space: nowrap;
   overflow: hidden;
