@@ -56,19 +56,19 @@
   position: absolute;
   inset: 0;
   background: url(./assets/rain.png) repeat;
-  background-size: 40px 40px;
+  background-size: 300px 300px;
   animation: rainFall 2s linear infinite;
   opacity: 0.5;
-  transform: rotate(-20deg);
-  transform-origin: top left;
+  filter: invert(1);
+  pointer-events: none;
 }
 
 @keyframes rainFall {
   from {
-    background-position: 0 0;
+    transform: translate(0, 0);
   }
   to {
-    background-position: 40px 40px;
+    transform: translate(-80px, 120px);
   }
 }
 
