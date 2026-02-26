@@ -1,7 +1,6 @@
 .list {
   display: flex;
   flex-direction: row;
-  gap: 16px;
-  justify-content: space-between;
+  gap: 6px;
   padding: 1rem;
 }
