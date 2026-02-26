@@ -1,9 +1,23 @@
 .glass {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1); /* glass bg */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /*for Safari*/
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  margin: 0.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.8); /* glass bg */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px); /*for Safari*/
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  padding: 1.2rem;
+  margin: 1rem;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.glass:active {
+  transform: scale(0.98);
 }

@@ -1,5 +1,7 @@
 .city {
+  margin: 0.5 auto;
   font-size: 2rem;
+  line-height: 1.1;
   white-space: nowrap;
   overflow: hidden;
   max-width: 100%;
@@ -8,6 +10,7 @@
 }
 
 .citySub {
+  margin: 0 auto;
   font-size: 0.8rem;
   display: block;
   white-space: nowrap;
