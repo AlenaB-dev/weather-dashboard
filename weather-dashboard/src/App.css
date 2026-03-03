@@ -22,21 +22,25 @@
 /* day */
 .app.day {
   background: linear-gradient(to top, #87ceeb, #e0f7ff);
+  color: #3a5676;
 }
 
 /* sunrise */
 .app.sunrise {
   background: linear-gradient(to top, #ffdd99, #ffe6cc);
+  color: #4b3b2f;
 }
 
 /* sunset */
 .app.sunset {
   background: linear-gradient(to top, #ff9966, #ffcc99);
+  color: #3b1f00;
 }
 
 /* night */
 .app.night {
   background: linear-gradient(to top, #0d1b2a, #1b263b);
+  color: #f0f0f0;
 }
 
 /* sunny */
