@@ -36,7 +36,6 @@ function App() {
 
   // country code in country name
   const regionName = new Intl.DisplayNames(["en"], { type: "region" });
-
   // city name in heading
   let cityLabel = "Detecting location...";
   if (selectedCity) {
@@ -76,8 +75,27 @@ function App() {
 
   const weatherClass = getWeatherClass(weather?.weather[0]?.main);
 
+  // determining the time of day
+  let timeOfDayClass = "day"; // day time by default
+
+  if (weather?.sys?.sunrise && weather?.sys?.sunset) {
+    const sunrise = weather.sys.sunrise;
+    const sunset = weather.sys.sunset;
+    const currentTime = Math.floor(Date.now() / 1000);
+
+    if (currentTime < sunrise || currentTime > sunset) {
+      timeOfDayClass = "night";
+    } else if (currentTime >= sunrise && currentTime < sunrise + 3600) {
+      timeOfDayClass = "sunrise";
+    } else if (currentTime <= sunrise && currentTime > sunset - 3600) {
+      timeOfDayClass = "sunset";
+    } else {
+      timeOfDayClass = "day";
+    }
+  }
+
   return (
-    <div className={`app ${weatherClass}`}>
+    <div className={`app ${weatherClass} ${timeOfDayClass}`}>
       <LocationHeader city={cityLabel} date={date} />
       <div>
         <WeatherOverview
