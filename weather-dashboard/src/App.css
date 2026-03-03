@@ -7,7 +7,7 @@
 
 .app {
   min-height: 100vh;
-  transition: background 0.8s ease;
+  transition: background 1s linear;
   position: relative;
   overflow: hidden;
 }
@@ -15,6 +15,28 @@
 .app > * {
   position: relative;
   z-index: 1;
+}
+
+/* time of day backgrounds */
+
+/* day */
+.app.day {
+  background: linear-gradient(to top, #87ceeb, #e0f7ff);
+}
+
+/* sunrise */
+.app.sunrise {
+  background: linear-gradient(to top, #ffdd99, #ffe6cc);
+}
+
+/* sunset */
+.app.sunset {
+  background: linear-gradient(to top, #ff9966, #ffcc99);
+}
+
+/* night */
+.app.night {
+  background: linear-gradient(to top, #0d1b2a, #1b263b);
 }
 
 /* sunny */
